@@ -1,3 +1,4 @@
+# encoding: utf-8
 from flask import render_template, abort, redirect, url_for, flash, jsonify, request
 import requests, json
 from . import main
