@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sunlands | 消息队列</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="static/AdminLTE/AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="static/AdminLTE/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="static/AdminLTE/AdminLTE-2.4.2/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="static/AdminLTE/AdminLTE-2.4.2/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+    folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="static/AdminLTE/AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
+
+    <!-- jQuery 3 -->
+    <script src="static/AdminLTE/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="static/AdminLTE/AdminLTE-2.4.2/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="static/AdminLTE/AdminLTE-2.4.2/dist/js/adminlte.min.js"></script>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+</nav>
+</header>
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel ">
+            <div class="pull-left image">
+                <img src="static/img/sunlands.png" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info ">
+                <p>Sunlands消息队列MQ</p>
+                <a href="javascript:void(0);"><i class="fa fa-circle text-success" id="envName"></i> </a>
+            </div>
+        </div>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MAIN NAVIGATION</li>
+            <li id="adminManager" onclick="dealMenu(this)" hidden>
+                <a href="javascript:void(0);">
+                    <span>管理员设置</span>
+                </a>
+            </li>
+            <li id="appManager" onclick="dealMenu(this)">
+                <a href="javascript:void(0);">
+                    <span>APP管理</span>
+                </a>
+            </li>
+            <li id="topicFollowLists" onclick="dealMenu(this)">
+                <a href="javascript:void(0);">
+                    <span>我关注的Topic</span>
+                </a>
+            </li>
+            <li id="topicAllLists" onclick="dealMenu(this)">
+                <a href="javascript:void(0);">
+                    <span>所有Topic</span>
+                </a>
+            </li>
+            <li id="producerManager" onclick="dealMenu(this)">
+                <a href="javascript:void(0);">
+                    <span>生产管理</span>
+                </a>
+            </li>
+            <li id="consumerManager" onclick="dealMenu(this)">
+                <a href="javascript:void(0);">
+                    <span>消费管理</span>
+                </a>
+            </li>
+
+            <li class="treeview" id="msgSearch">
+                <a href="javascript:void(0);">
+                    <span>消息查询</span>
+                    <span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+                </a>
+                <ul class="treeview-menu">
+                    {#                    <li id="queryMessageByTopic" onclick="dealMenu(this)"><a href="javascript:void(0);"><i#}
+                    {#                            class="fa fa-circle-o"></i>#}
+                    {#                        按Topic查询</a></li>#}
+                    <li id="queryMessageByID" onclick="dealMenu(this)"><a href="javascript:void(0);"><i
+                            class="fa fa-circle-o"></i>
+                        按MessageID查询</a></li>
+                    <li id="queryMessageByMsgKey" onclick="dealMenu(this)"><a href="javascript:void(0);"><i
+                            class="fa fa-circle-o"></i>
+                        按MessageKey查询</a></li>
+                </ul>
+            </li>
+            <li class="treeview" id="sourceReport">
+                <a href="javascript:void(0);">
+                    <span>资源报表</span>
+                    <span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="messageProduce" onclick="dealMenu(this)"><a href="javascript:void(0);"><i
+                            class="fa fa-circle-o"></i> 消息生产</a></li>
+                    <li id="messageConsume" onclick="dealMenu(this)"><a href="javascript:void(0);"><i
+                            class="fa fa-circle-o"></i> 消息消费</a></li>
+                </ul>
+            </li>
+            <li id="monitoringAndAlarm" onclick="dealMenu(this)">
+                <a href="javascript:void(0);">
+                    <span>监控报警</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <iframe name="toppage" width=100% height=900px marginwidth=0 marginheight=0 frameborder="no"
+            border="0" src="appManager" id="mqFrame"></iframe>
+</div>
+<!-- /.content-wrapper -->
+<footer class="main-footer col-lg-12">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2018- <a href="javascript:void(0);">Sunlands RocketMQ</a>.</strong> All rights
+    reserved.
+</footer>
+
+<!-- /.row (main row) -->
+</body>
+</html>
